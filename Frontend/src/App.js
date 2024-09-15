@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
-import GlobalStyle from './styles/GlobalStyle';
-import Home from './pages/Home';
+import GlobalStyle from './styles/GlobalStyle.js';
+import Home from './pages/Home.js';
 import SkinAnalysis from './pages/SkinAnalysis';
-import Results from './pages/Results';
-import SkinSurvey from './pages/SkinSurvey';
-import Products from './pages/Products';
-import Community from './pages/Community';
+import Results from './pages/Results.js';
+import SkinSurvey from './pages/SkinSurvey.js'; // Added .js extension
+import Products from './pages/Products.js'; // Added .js extension
+import Community from './pages/Community.js'; // Added .js extension
 
 const theme = {
   primary: '#4ECDC4',

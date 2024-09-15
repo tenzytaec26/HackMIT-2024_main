@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import Button from '../components/Button';
+import Button from '../components/Button.js'; // Add .js extension
+import axios from 'axios'; // Add axios for making HTTP requests
 
 const fadeIn = keyframes`
   from { opacity: 0; }
@@ -65,9 +66,24 @@ function SkinAnalysis() {
     setImage(file);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate('/results');
+
+    const formData = new FormData();
+    formData.append('file', image);
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/classify', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+        },
+      });
+
+      navigate('/results', { state: { analysisResults: response.data } });
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
   };
 
   return (

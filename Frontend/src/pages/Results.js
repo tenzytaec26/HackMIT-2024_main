@@ -1,10 +1,20 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Results() {
+  const location = useLocation();
+  const { analysisResults } = location.state || {};
+
   return (
     <div>
       <h2>Your Skin Analysis Results</h2>
-      <p>Here's where we'll display the analysis results and recommendations.</p>
+      {analysisResults ? (
+        <div>
+          <p>{analysisResults}</p>
+        </div>
+      ) : (
+        <p>Loading results...</p>
+      )}
     </div>
   );
 }
