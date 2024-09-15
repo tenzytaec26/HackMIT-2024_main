@@ -83,7 +83,7 @@ function App() {
         <AppContainer>
           <Header>
             <Nav>
-            <LogoText>Skincare AI</LogoText>
+            <LogoText to="/">Skincare AI</LogoText>
               <NavLinks>
                 <StyledLink to="/">Home</StyledLink>
                 <StyledLink to="/survey">Survey</StyledLink>
